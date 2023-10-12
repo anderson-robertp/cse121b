@@ -39,41 +39,39 @@ const getTemples = async() => {
 /* reset Function */
 const reset = () => {
     const element = document.getElementById("article");
-    templesElement.remove(element);
+    templesElement.innerHTML = "";
 }
 
 
 /* sortBy Function */
 const sortBy = (temples) => {
     reset();
-    filter = document.getElementById("sortBy").nodeValue;
+    filter = document.querySelector("#sortBy").value;
     switch (filter) {
         case "utah":
-            let templeUtah = templeList.filter(element => element["location"].includes("utah"));
+            let templeUtah = temples.filter(element => element["location"].includes("Utah"));
             DisplayTemples(templeUtah);
             break;
         case "notutah":
-            let templeOther = templeList.filter(element => element["location"].excludes("utah"));
+            let templeOther = temples.filter(element => !element["location"].includes("Utah"));
             DisplayTemples(templeOther);
             break;
         case "older":
-            let templeOld = templeList.filter(element => element["dedicated"].compare(new Date(1950, 0, 1)))
+            let date = "1950, January, 1"
+            let templeOld = temples.filter(element => element["dedicated"] < date)
             DisplayTemples(templeOld);
             break;
         case "all":
-            DisplayTemples(templeList);
+            DisplayTemples(temples);
             break;
-    
-        default:
-            break;
-    }
+    };
 
     
 }
 
 
-console.log(templeList);
+//console.log(templeList);
 getTemples();
 
 /* Event Listener */
-document.querySelector("#sortBy").addEventListener("change", () => {sortBy(templeList)});
+document.querySelector("#sortBy").addEventListener("change", () => sortBy(templeList));
