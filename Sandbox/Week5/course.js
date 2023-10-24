@@ -17,6 +17,10 @@ const aCourse = {
         instructor: "Sis A",
       },
     ],
+    init() {
+      setCourseInfo(this);
+      renderSections(this.sections);
+    },
     changeEnrollment: function (sectionNum, add = true) {
       // find the right section...Array.findIndex will work here
       const sectionIndex = this.sections.findIndex(
@@ -52,4 +56,4 @@ const aCourse = {
     document.querySelector("#sections").innerHTML = html.join("");
   }
 
-  export {aCourse, setCourseInfo,  renderSections}
+  export default aCourse;

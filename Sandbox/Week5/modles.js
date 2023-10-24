@@ -1,4 +1,4 @@
-import {aCourse, setCourseInfo, renderSections} from "./course.js";
+import aCourse from "./course.js";
   
   document.querySelector("#enrollStudent").addEventListener("click", function () {
     const sectionNum = document.querySelector("#sectionNumber").value;
