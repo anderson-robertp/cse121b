@@ -72,6 +72,7 @@ async function populateLeftDropdown() {
 			leftOptions.forEach(item => {
 				var option = document.createElement("option");
 				option.value = item.id;  // Change this to the actual data field you want to use
+				//console.log(item)
 				option.text = item.name;   // Change this to the actual data field you want to display
 				leftDropdown.appendChild(option);
 			});
@@ -98,6 +99,7 @@ async function populateRightDropdown (){
 			rightOptions.forEach(item => {
 				var option = document.createElement("option");
 				option.value = item.id;  // Change this to the actual data field you want to use
+				//console.log(item.key)
 				option.text = item.name;   // Change this to the actual data field you want to display
 				rightDropdown.appendChild(option);
 			});
@@ -115,6 +117,34 @@ async function populateRightDropdown (){
 	}
 }
 
+function PopulateRight(){
+	const rightCorner = document.getElementById('rightcorner');
+	rightID = document.querySelector("#rightDropdown").value;
+	//console.log(rightID);
+	//fighterRight = rightOptions[rightID];
+	//console.log(fighterRight);
+	rightOptions.forEach(item => {
+		if(item.id == rightID){
+			rightName = item.name;
+
+			rightPowerStats = item.powerstats
+			rightImages = item.images
+		}
+	})
+	rightCorner.innerHTML = "<h2>${rightName}</h2>";
+}
+
+function PopulateLeft(){
+	fighterLeft = document.querySelector("#leftDropdown")
+}
+
+function Fight(){
+	alert('Fight Button Clicked!')
+}
+
 /* Event Listener */
-document.querySelector("#leftHVDropdown").addEventListener("change", () => populateLeftDropdown())
-document.querySelector("#rightHVDropdown").addEventListener("change", () => populateRightDropdown())
+document.querySelector("#leftHVDropdown").addEventListener("change", () => populateLeftDropdown());
+document.querySelector("#rightHVDropdown").addEventListener("change", () => populateRightDropdown());
+document.querySelector("#leftDropdown").addEventListener("change", () => PopulateLeft());
+document.querySelector("#rightDropdown").addEventListener("change", () => PopulateRight());
+document.querySelector("#fightButton").addEventListener("click", () => Fight());
