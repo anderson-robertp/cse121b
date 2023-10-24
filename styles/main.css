@@ -279,6 +279,12 @@ footer {
     margin: .5rem;
 }
 
+#header{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 /* Media Queries */
 @media only screen and (min-width: 32.5em) {
     nav ul {
@@ -311,5 +317,7 @@ footer {
         margin: 0 auto;
         max-width: 950px;
     }
+
+    
 
 }

@@ -22,7 +22,7 @@ const DisplayTemples = (_templeList) => {
         article.appendChild(img);
         templesElement.appendChild(article);
 
-
+        https://wireframe.cc/3txUn5
         
     });
 }
