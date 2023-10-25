@@ -138,57 +138,107 @@ function PopulateRight(){
 	const rightCorner = document.getElementById('rightcorner');
 	rightID = document.querySelector("#rightDropdown").value;
 	console.log(rightID);
-	//fighterRight = rightOptions[rightID];
-	//console.log(fighterRight);
-	//const filteredOptions = rightOptions.filter((item) => item.id === rightID);
-	//console.log(filteredOptions);
 	rightOptions.forEach(item => {
 		if(item.id == rightID){
 			//console.log(item);
 			rightName = item.name;
+			var rightH2 = document.createElement("h2");
+			rightH2.textContent = rightName;
+			rightCorner.appendChild(rightH2);
 			
-			//console.log(rightName);
-			//var rightPowerStats = [];
-			//rightPowerStats = item.powerstats[combat];
-			//rightPowerStats.forEach(stat => {
 			rightCombat = item.powerstats.combat;
 			rightDur = item.powerstats.durability;
 			rightPow = item.powerstats.power;
 			rightSpeed = item.powerstats.speed;
 			rightStr = item.powerstats.strength;
 			console.log(rightCombat)
-			//})
+			
 			rightImages = item.images.sm;
-			//rightSmImg = rightImages.sm;
-			console.log(rightImages);
+			let rightImg = document.createElement("img");
+			rightImg.setAttribute("src", rightImages);
+			rightImg.setAttribute("alt", rightID);
+			rightCorner.appendChild(rightImg);
+			var rightStat = document.createElement("div")
+			
+			rightSpan = document.createElement("span");
+			let rightSpanText = `
+			Combat:${rightCombat}
+			Durability:${rightDur}
+			Power:${rightPow}
+			Speed:${rightSpeed}
+			Strength:${rightStr}
+			`;
+			rightSpan.textContent = rightSpanText
+			rightCorner.appendChild(rightSpan);
+			
 		}
 	})
-	
-	//const fighterRight = rightOptions.filter((person) => person.id === rightID);
-	//rightName = fighterRight.name;
-	//console.log(rightName)
-			//rightPowerStats = fighterRight.powerstats
-			//rightPowerStats.forEach(stat => {
-				//rightCombat = stat.combat
-				//rightDur = stat.durability
-				//rightPow = stat.power
-				//rightSpeed = stat.speed
-				//rightStr = stat.strength
-			//})
-			//rightImages = fighterRight.images
-			//rhtImgUrl = rightImages.sm
-
-	rightNameElement = document.createElement("h2");
-	rightNameElement.
-
 }
 
 function PopulateLeft(){
-	fighterLeft = document.querySelector("#leftDropdown")
+	let leftCorner = document.getElementById('leftCorner')
+	leftID = document.querySelector("#leftDropdown").value;
+	console.log(leftID);
+	leftOptions.forEach(item => {
+		if(item.id == leftID){
+			//console.log(item);
+			leftName = item.name;
+			var leftH2 = document.createElement("h2");
+			leftH2.textContent = leftName;
+			leftCorner.appendChild(leftH2);
+			
+			leftCombat = item.powerstats.combat;
+			leftDur = item.powerstats.durability;
+			leftPow = item.powerstats.power;
+			leftSpeed = item.powerstats.speed;
+			leftStr = item.powerstats.strength;
+			console.log(leftCombat)
+			
+			leftImages = item.images.sm;
+			let leftImg = document.createElement("img");
+			leftImg.setAttribute("src", leftImages);
+			leftImg.setAttribute("alt", leftID);
+			leftCorner.appendChild(leftImg);
+			var leftStat = document.createElement("div")
+			
+			leftSpan = document.createElement("span");
+			let leftSpanText = `
+			Combat:${leftCombat}
+			Durability:${leftDur}
+			Power:${leftPow}
+			Speed:${leftSpeed}
+			Strength:${leftStr}
+			`;
+			leftSpan.textContent = leftSpanText
+			leftCorner.appendChild(leftSpan);
+			
+		}
+	})
 }
 
 function Fight(){
-	alert('Fight Button Clicked!')
+	//alert('Fight Button Clicked!')
+	ring = document.getElementById('ringside')
+	if(leftCombat == rightCombat){
+		fightText = `The fight would end in a stalemate.`
+		console.log(fightText)
+		
+	}
+	else if(leftCombat > rightCombat){
+		fightText = `${leftName} would win in a fight.`
+		console.log(fightText)
+	}
+	else if (leftCombat < rightCombat){
+		fightText = `${rightName} would win in a fight.`
+		console.log(fightText)
+	}
+	else{
+		fightText = `We all lose when we fight.`
+		console.log(fightText)
+	}
+	var ringH3 = document.createElement("h3")
+	ringH3.textContent = fightText
+	ring.appendChild(ringH3);
 }
 
 /* Event Listener */
