@@ -65,9 +65,14 @@ const reset = (resetEl) => {
 }
 async function populateLeftDropdown() {
 	reset("leftDropdown")
+	
 	filter = document.querySelector("#leftHVDropdown").value;
 	switch(filter){
 		case "hero":
+			var option = document.createElement("option");
+			option.value = "Pick a Hero"
+			option.text = "Pick a Hero"
+			leftDropdown.appendChild(option);
 			leftOptions = await GetHeroes();
 			leftOptions.forEach(item => {
 				var option = document.createElement("option");
@@ -78,7 +83,10 @@ async function populateLeftDropdown() {
 			});
 			break
 		case "villian":
-			
+			var option = document.createElement("option");
+			option.value = "Pick a Villian"
+			option.text = "Pick a Villian"
+			leftDropdown.appendChild(option);
 			leftOptions = await GetVillians();
 			leftOptions.forEach(item => {
 				var option = document.createElement("option");
@@ -91,9 +99,14 @@ async function populateLeftDropdown() {
 }
 async function populateRightDropdown (){
 	reset("rightDropdown")
+	
 	filter = document.querySelector("#rightHVDropdown").value;
 	switch(filter){
 		case "hero":
+			var option = document.createElement("option");
+			option.value = "Pick a Hero"
+			option.text = "Pick a Hero"
+			rightDropdown.appendChild(option);
 			rightOptions = await GetHeroes();
 			//rightOptions = JSON.parse(response);
 			rightOptions.forEach(item => {
@@ -105,6 +118,10 @@ async function populateRightDropdown (){
 			});
 			break
 		case "villian":
+			var option = document.createElement("option");
+			option.value = "Pick a Villian"
+			option.text = "Pick a Villian"
+			rightDropdown.appendChild(option);
 			rightOptions = await GetVillians();
 			//rightOptions = JSON.parse(response);
 			rightOptions.forEach(item => {
@@ -120,18 +137,50 @@ async function populateRightDropdown (){
 function PopulateRight(){
 	const rightCorner = document.getElementById('rightcorner');
 	rightID = document.querySelector("#rightDropdown").value;
-	//console.log(rightID);
+	console.log(rightID);
 	//fighterRight = rightOptions[rightID];
 	//console.log(fighterRight);
+	//const filteredOptions = rightOptions.filter((item) => item.id === rightID);
+	//console.log(filteredOptions);
 	rightOptions.forEach(item => {
 		if(item.id == rightID){
+			//console.log(item);
 			rightName = item.name;
-
-			rightPowerStats = item.powerstats
-			rightImages = item.images
+			
+			//console.log(rightName);
+			//var rightPowerStats = [];
+			//rightPowerStats = item.powerstats[combat];
+			//rightPowerStats.forEach(stat => {
+			rightCombat = item.powerstats.combat;
+			rightDur = item.powerstats.durability;
+			rightPow = item.powerstats.power;
+			rightSpeed = item.powerstats.speed;
+			rightStr = item.powerstats.strength;
+			console.log(rightCombat)
+			//})
+			rightImages = item.images.sm;
+			//rightSmImg = rightImages.sm;
+			console.log(rightImages);
 		}
 	})
-	rightCorner.innerHTML = "<h2>${rightName}</h2>";
+	
+	//const fighterRight = rightOptions.filter((person) => person.id === rightID);
+	//rightName = fighterRight.name;
+	//console.log(rightName)
+			//rightPowerStats = fighterRight.powerstats
+			//rightPowerStats.forEach(stat => {
+				//rightCombat = stat.combat
+				//rightDur = stat.durability
+				//rightPow = stat.power
+				//rightSpeed = stat.speed
+				//rightStr = stat.strength
+			//})
+			//rightImages = fighterRight.images
+			//rhtImgUrl = rightImages.sm
+
+	rightNameElement = document.createElement("h2");
+	rightNameElement.
+
 }
 
 function PopulateLeft(){
