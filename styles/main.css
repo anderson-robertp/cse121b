@@ -280,12 +280,32 @@ footer {
 }
 
 #header{
+    display: grid;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 #hero{
     display:grid;
+}
+#left{
+    grid-column: 1;
+}
+#center{
+    grid-column: 2;
+}
+#right{
+    grid-column: 3;
+}
+#leftCorner{
+    display:grid;
+}
+#rightcorner{
+    display:grid
+}
+.span{
+    display: grid;
+    grid-template-columns: auto;
 }
 
 /* Media Queries */
