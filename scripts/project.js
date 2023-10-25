@@ -136,6 +136,7 @@ async function populateRightDropdown (){
 
 function PopulateRight(){
 	const rightCorner = document.getElementById('rightcorner');
+	rightCorner.innerHTML = "";
 	rightID = document.querySelector("#rightDropdown").value;
 	console.log(rightID);
 	rightOptions.forEach(item => {
@@ -177,6 +178,7 @@ function PopulateRight(){
 
 function PopulateLeft(){
 	let leftCorner = document.getElementById('leftCorner')
+	leftCorner.innerHTML = ""
 	leftID = document.querySelector("#leftDropdown").value;
 	console.log(leftID);
 	leftOptions.forEach(item => {
@@ -219,6 +221,7 @@ function PopulateLeft(){
 function Fight(){
 	//alert('Fight Button Clicked!')
 	ring = document.getElementById('ringside')
+	ring.innerHTML = "";
 	if(leftCombat == rightCombat){
 		fightText = `The fight would end in a stalemate.`
 		console.log(fightText)
